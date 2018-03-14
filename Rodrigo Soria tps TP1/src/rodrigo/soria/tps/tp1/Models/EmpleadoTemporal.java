@@ -43,6 +43,25 @@ public class EmpleadoTemporal extends Empleado {
         this.horasTrabajo = horasTrabajo;
     }
     
+     @Override
+    public boolean equals(Object o) {
+        boolean resp = false;
+        
+        if(o != null && o instanceof Empleado ){
+            EmpleadoTemporal e = (EmpleadoTemporal) o;
+            resp = super.equals(o) && sueldoXhora.equals(e.getSueldoXhora()) && horasTrabajo == e.getHorasTrabajo();
+        }
+        
+        return resp;
+    }
+    
+    @Override
+    public  EmpleadoTemporal clone() throws CloneNotSupportedException{
+        
+        EmpleadoTemporal x = (EmpleadoTemporal)super.clone(); 
+        return x;
+    }
+    
     @Override
     public String toString(){
         return super.toString() 

@@ -6,7 +6,6 @@
 package rodrigo.soria.tps.tp1.Models;
 
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  *
@@ -51,6 +50,24 @@ public class EmpleadoPermanente extends Empleado{
         this.porcentajeGanancia = porcentaje;
     }
     
+    @Override
+    public boolean equals(Object o) {
+        boolean resp = false;
+        
+        if(o != null && o instanceof Empleado ){
+            EmpleadoPermanente e = (EmpleadoPermanente) o;
+            resp = super.equals(o) && sueldoBasico.equals(e.getSueldoBasico()) && porcentajeGanancia.equals(e.getPorcentaje());
+        }
+        
+        return resp;
+    }
+    
+    @Override
+    public  EmpleadoPermanente clone() throws CloneNotSupportedException{
+        
+        EmpleadoPermanente x = (EmpleadoPermanente)super.clone(); 
+        return x;
+    }
     
     @Override
     public String toString(){
@@ -58,5 +75,6 @@ public class EmpleadoPermanente extends Empleado{
                 + " | Sueldo Basico: $" + sueldoBasico
                 + " | Porcentaje de ganancia: " + porcentajeGanancia;
     }
+    
     
 }

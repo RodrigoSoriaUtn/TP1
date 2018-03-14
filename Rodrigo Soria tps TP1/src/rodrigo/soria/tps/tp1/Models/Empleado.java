@@ -5,9 +5,6 @@
  */
 package rodrigo.soria.tps.tp1.Models;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author Rodrigo Soria
@@ -22,7 +19,7 @@ public abstract class Empleado {
     protected Empleado(int anio_ingreso, String nombre){
         this.anio_ingreso = anio_ingreso;
         this.nombre = nombre;
-        this.id_empleado = this.ultimoRegistro;
+        this.id_empleado = Empleado.ultimoRegistro;
         Empleado.ultimoRegistro++;
     }
     
