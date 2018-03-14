@@ -43,4 +43,12 @@ public class EmpleadoTemporal extends Empleado {
         this.horasTrabajo = horasTrabajo;
     }
     
+    @Override
+    public String toString(){
+        return super.toString() 
+                + " | Sueldo Por hora: $" + sueldoXhora
+                + " | Horas de trabajo: " + horasTrabajo;
+    
+    
+    }
 }

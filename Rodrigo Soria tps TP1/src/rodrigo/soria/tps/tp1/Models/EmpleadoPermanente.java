@@ -15,11 +15,11 @@ import java.util.Date;
 public class EmpleadoPermanente extends Empleado{
       
     private Double sueldoBasico;
-    private Double porcentaje;
+    private Double porcentajeGanancia;
 
     public EmpleadoPermanente(int anio_ingreso, String nombre, Double sueldoBasico, Double porcentaje) {
         super(anio_ingreso, nombre);
-        this.porcentaje = porcentaje;
+        this.porcentajeGanancia = porcentaje;
         this.sueldoBasico = sueldoBasico;
     }
     
@@ -28,7 +28,9 @@ public class EmpleadoPermanente extends Empleado{
        Double sueldo;
        Calendar calendario = Calendar.getInstance();
        
-       int diferenciaDeAnio = calendario.get(Calendar.YEAR) - super.getAnio_ingreso();
+       int diferenciaDeAnio = calendario.get(Calendar.YEAR) - getAnio_ingreso();
+       
+       sueldo = diferenciaDeAnio * ((porcentajeGanancia/100) * sueldoBasico);
        
        return sueldo;
     }
@@ -42,11 +44,19 @@ public class EmpleadoPermanente extends Empleado{
     }
 
     public Double getPorcentaje() {
-        return porcentaje;
+        return porcentajeGanancia;
     }
 
     public void setPorcentaje(Double porcentaje) {
-        this.porcentaje = porcentaje;
+        this.porcentajeGanancia = porcentaje;
     }
-
+    
+    
+    @Override
+    public String toString(){
+        return super.toString() 
+                + " | Sueldo Basico: $" + sueldoBasico
+                + " | Porcentaje de ganancia: " + porcentajeGanancia;
+    }
+    
 }

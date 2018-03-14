@@ -5,6 +5,9 @@
  */
 package rodrigo.soria.tps.tp1.Models;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Rodrigo Soria
@@ -20,7 +23,7 @@ public abstract class Empleado {
         this.anio_ingreso = anio_ingreso;
         this.nombre = nombre;
         this.id_empleado = this.ultimoRegistro;
-        this.ultimoRegistro++;
+        Empleado.ultimoRegistro++;
     }
     
     public abstract Double getSueldo();
@@ -47,6 +50,32 @@ public abstract class Empleado {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        boolean resp = false;
+        
+        if(o != null && o instanceof Empleado ){
+            Empleado e = (Empleado) o;
+            resp = nombre.equals(e.getNombre()) && anio_ingreso == e.getAnio_ingreso();
+        }
+        
+        return resp;
+    }
+    
+    
+    @Override
+    public  Empleado clone() throws CloneNotSupportedException{
+        
+        Empleado x = (Empleado)super.clone(); 
+        return x;
+    }
+    
+    @Override
+    public String toString(){
+        return  " | Nombre: " + nombre
+              + " | Año de ingreso: " + anio_ingreso ;
     }
     
 }
